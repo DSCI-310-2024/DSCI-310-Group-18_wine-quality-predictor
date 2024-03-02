@@ -1,1 +1,3 @@
+# Contribution
 
+This project was started at the University of British Columbia as a group assignment for DSCI 310. As input to this repository is restricted under the class' grading policies (until the end of the term), anyone other than the listed authors seeking to contribute is invited to duplicate this repository (as allowed by the [LICENSE](https://github.com/DSCI-310-2024/DSCI-310-Group-18_wine-quality-predictor/blob/304f29cfdbd36ace6a540083733da9f349faf6e9/LICENSE)), and operate independently of the original team until further notice.
