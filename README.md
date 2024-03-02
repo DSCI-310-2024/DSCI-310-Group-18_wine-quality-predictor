@@ -9,7 +9,7 @@ Use the steps below to reproduce this analysis.
 (Outline steps)
 
 # Dependencies
-(List Depenencies)
+(List Dependencies)
 
 # License
 Our report is licensed under the [MIT License](https://opensource.org/license/MIT). See [LICENSE](https://github.com/DSCI-310-2024/DSCI-310-Group-18_wine-quality-predictor/blob/8fb3e227b92abd07962779aa3e01b77c78fdc9d2/LICENSE) for additional information.
