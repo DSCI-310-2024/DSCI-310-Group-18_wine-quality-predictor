@@ -16,3 +16,5 @@ Our report is licensed under the [MIT License](https://opensource.org/license/MI
 
 # References
 Cortez,Paulo, Cerdeira,A., Almeida,F., Matos,T., and Reis,J.. (2009). Wine Quality. UCI Machine Learning Repository. https://doi.org/10.24432/C56S3T.
+
+CVRVV. (2024). Vinho Verde. https://www.vinhoverde.pt/en/homepage
