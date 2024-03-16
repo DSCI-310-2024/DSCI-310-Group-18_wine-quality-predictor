@@ -17,8 +17,8 @@ execute:
 ---
 
 ```{r}
-suppressPackageStartupMessages(library(tidyverse)
-suppressPackageStartupMessageslibrary(tidymodels)
+suppressPackageStartupMessages(library(tidyverse))
+suppressPackageStartupMessages(library(tidymodels))
 suppressPackageStartupMessages(library(repr))
 suppressPackageStartupMessages(library(psych))
 suppressPackageStartupMessages(library(kknn))
