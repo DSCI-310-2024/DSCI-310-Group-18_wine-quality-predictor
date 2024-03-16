@@ -1,0 +1,7 @@
+services:
+  project-image:
+    image: sidahuja/dsci-310_group-18_wine-dockerimage:latest
+    ports:
+    - "8888:8888"
+    volumes: 
+    - .:/home/jovyan
