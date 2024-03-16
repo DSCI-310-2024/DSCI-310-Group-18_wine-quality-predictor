@@ -15,7 +15,7 @@ Docker is a container solution used to manage the software dependencies for this
 Use the steps below to reproduce this analysis.
 
 ### Setup
-1. [Install] (https://www.docker.com/get-started/) and launch Docker on your computer.
+1. [Install](https://www.docker.com/get-started/) and launch Docker on your computer.
 2. Clone this GitHub repository.
 
 ### Running the analysis
