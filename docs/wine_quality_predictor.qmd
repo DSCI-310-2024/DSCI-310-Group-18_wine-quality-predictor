@@ -17,11 +17,11 @@ execute:
 ---
 
 ```{r}
-library(tidyverse, quietly = TRUE)
-library(tidymodels, quietly = TRUE)
-library(repr, quietly = TRUE)
-library(psych, quietly = TRUE)
-library(kknn, quietly = TRUE)
+suppressPackageStartupMessages(library(tidyverse)
+suppressPackageStartupMessageslibrary(tidymodels)
+suppressPackageStartupMessages(library(repr))
+suppressPackageStartupMessages(library(psych))
+suppressPackageStartupMessages(library(kknn))
 ```
 
 ## Summary
