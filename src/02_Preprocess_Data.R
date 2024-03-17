@@ -20,6 +20,11 @@ suppressMessages(library(psych))
 opt <- docopt(doc)
 
 main <- function(raw_data, data_out) {
+    
+    #create output dir if it does not exist
+    if (!dir.exists(out_dir)) {
+    dir.create(out_dir)
+  }
 
     #read and save the raw data as a variable
     data <- read_delim(raw_data, delim = ";", show_col_types = FALSE)
