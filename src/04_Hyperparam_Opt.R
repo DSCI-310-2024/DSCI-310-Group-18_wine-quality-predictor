@@ -72,7 +72,7 @@ main <- function(file_path, output_path) {
         pull(neighbors)
     
     #save best k value as a text object
-    writeLines(as.numeric(best_k), "05_best_k.txt")
+    writeLines(as.character(best_k), file.path(output_path, "05_best_k.txt"))
 
     # generating the plot of accuracy for each tested k value
     accuracies_vs_k <- ggplot(accuracies, aes(x = neighbors, y = mean)) +

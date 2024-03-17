@@ -25,8 +25,8 @@ main <- function(raw_data, data_out) {
     if (!dir.exists(data_out)) {
     dir.create(data_out)
   }
-    #load in training data
-    data <- read_csv(file_path)
+    #load in raw data
+    data <- read_csv(raw_data)
     
     # changing quality_score to quality_category
     data <- data %>% 
@@ -37,7 +37,7 @@ main <- function(raw_data, data_out) {
         select(-quality_score)
     
     #saving data set
-    write_csv(data, file.path(output_path,"01_wine_data.csv"))
+    write_csv(data, file.path(data_out,"01_wine_data.csv"))
     
     #setting seed
     set.seed(321)

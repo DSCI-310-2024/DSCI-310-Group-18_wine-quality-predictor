@@ -4,12 +4,12 @@
 It saves the model to a RDS file and model results as a CSV. The model
 evaluation metrics are also calculated and saved.
 
-Usage: src/05_Classification_Model.R --file_path=<file_path> --best_k_path=<best_k_path> --test_file=<train_file> --output_path=<output_path> 
+Usage: src/05_Classification_Model.R --file_path=<file_path> --best_k_path=<best_k_path> --test_file=<test_file> --output_path=<output_path> 
 
 Options:
 --file_path=<file_path>         Path to the data file
 --best_k_path=<best_k_path>     Path to the best k value file
---test_file=<train_file>        Path to the test file
+--test_file=<test_file>        Path to the test file
 --output_path=<output_path>     Path to the output files 
 " -> doc
 
@@ -22,7 +22,7 @@ suppressWarnings(library(kknn))
 
 opt <- docopt(doc)
 
-main <- function(file_path, best_k_path, train_file, output_path) {
+main <- function(file_path, best_k_path, test_file, output_path) {
 
     #load in training data
     data <- read_csv(file_path)
@@ -31,7 +31,7 @@ main <- function(file_path, best_k_path, train_file, output_path) {
     set.seed(654)
 
     # read the best k value outputted during hyperparameter optimization
-    best_k <- readLines(best_k_path)
+    best_k <- as.numeric(readLines(best_k_path))
 
     # making the recipe for classification
     wine_recipe <- recipe(quality_category ~ alcohol + chlorides + volatile_acidity + 
@@ -56,16 +56,19 @@ main <- function(file_path, best_k_path, train_file, output_path) {
     saveRDS(knn_fit, file.path(output_path, "07_classification_model.rds"))
 
     # loading in test data
-    test_data <- read_csv(train_file)
+    test_data <- read_csv(test_file)
 
     # using model on test set
     wine_test_predictions <- predict(knn_fit, test_data) %>%
-        bind_cols(test_data)
+    bind_cols(test_data)
 
-    # complining results
+    #compiling metrics
+    wine_test_predictions$quality_category <- factor(wine_test_predictions$quality_category)
+    class_metrics <- metric_set(accuracy, kap)
+
     wine_test_accuracy <- wine_test_predictions %>%
-        metrics(truth = quality_category, estimate = .pred_class) %>%
-        filter(.metric == "accuracy")
+    class_metrics(truth = quality_category, estimate = .pred_class) %>%
+    filter(.metric == "accuracy")
 
     wine_test_precision <- wine_test_predictions %>%
         precision(truth = quality_category, estimate = .pred_class, event_level="first")
@@ -83,9 +86,9 @@ main <- function(file_path, best_k_path, train_file, output_path) {
     confusion <- wine_test_predictions %>%
              conf_mat(truth = quality_category, estimate = .pred_class)
     
-    #saving confusion matrix
-    confusion_df <- data.frame(confusion)
-    write_csv(confusion_df, file.path(output_path,"09_confusion_matrix.csv"))
+    #saving confusion matrix as image
+    confusion_img <- autoplot(confusion, type = "heatmap")
+    ggsave(file.path(output_path, "09_confusion_matrix.png"), confusion_img)
 }
 
-main(opt$file_path, opt$best_k_path, opt$train_file, opt$output_path)
+main(opt$file_path, opt$best_k_path, opt$test_file, opt$output_path)

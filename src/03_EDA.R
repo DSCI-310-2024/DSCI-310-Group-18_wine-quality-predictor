@@ -20,6 +20,11 @@ opt <- docopt(doc)
 
 main <- function(file_path, output_path) {
 
+    #create output dir if it does not exist
+    if (!dir.exists(output_path)) {
+    dir.create(output_path)
+    }
+
     #Summary Tables
     #load in training data
     data <- read_csv(file_path)
