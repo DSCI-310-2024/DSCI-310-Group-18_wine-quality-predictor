@@ -78,7 +78,7 @@ summ_stats <- read_csv("../results/01_summary_table_features.csv")
 knitr::kable(summ_stats)
 ```
 
-We can see in @summary-stats that there are no missing values as well as the summary metrics for each column. This table is generated using unscaled data so that we can use out intuition and recall the specific units of each column, gaining a better understanding of the column characteristics.
+We can see in @tbl-summary-stats that there are no missing values as well as the summary metrics for each column. This table is generated using unscaled data so that we can use out intuition and recall the specific units of each column, gaining a better understanding of the column characteristics.
 
 ```{r}
 #| warning: false
