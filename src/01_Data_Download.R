@@ -17,6 +17,9 @@ opt <- docopt(doc)
 
 main <- function(url, file_path) {
 
+    #make folders
+    dir.create("data")
+    dir.create("data/raw")
     # read in data from web
     # https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-white.csv
     data <- read_delim(url, delim = ";", show_col_types = FALSE)
