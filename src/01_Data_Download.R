@@ -1,7 +1,7 @@
 # author: Group 18: Sid Ahuja
 
-"This script downloads the zip file containing data from a specified URL,
-unzips the files, extracts the relevent data, and saves it to a specified local filepath.
+"This script downloads the csv containing data from a specified URL and 
+extracts the relevent data, and saves it to a specified local filepath.
 
 Usage: src/01_Data_Download.R --url=<url> --file_path=<file_path>
 
@@ -17,14 +17,15 @@ opt <- docopt(doc)
 
 main <- function(url, file_path) {
 
-    # create temp file
-    temp <- tempfile()
+    # read in data from web
+    # https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-white.csv
+    data <- read_delim(url, delim = ";", show_col_types = FALSE)
+    colnames(data) <- c("fixed_acidity", "volatile_acidity", "citric_acid", "residual_sugar", 
+                          "chlorides", "free_sulfur_dioxide", "total_sulfur_dioxide", "density", 
+                          "pH", "sulphates", "alcohol", "quality_score")
 
-    # download the .zip file to the temp location
-    download.file(url, temp)
-
-    # unzip file and save in file_path
-    unzip(temp, exdir = file_path)
+    # save the file in specified local filepath
+    write_csv(data, file_path)
 
 }
 

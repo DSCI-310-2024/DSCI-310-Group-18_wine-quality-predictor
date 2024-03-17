@@ -4,11 +4,11 @@
 prior to exploratory data analysis and modelling. It also splits the processed 
 data into train and test sets. Seed is set as 321.
 
-Usage: src/02_Preprocess_Data.R --raw_data=<raw_data> --data_to=<data_to>
+Usage: src/02_Preprocess_Data.R --raw_data=<raw_data> --data_out=<data_out>
 
 Options:
 --raw_data=<raw_data>   Path to the raw data
---data_to=<data_to>     Path to the directory where you want to save all processed data files
+--data_out=<data_out>   Path to the directory where you want to save all processed data files
 " -> doc
 
 suppressMessages(library(tidyverse))
@@ -22,18 +22,11 @@ opt <- docopt(doc)
 main <- function(raw_data, data_out) {
     
     #create output dir if it does not exist
-    if (!dir.exists(out_dir)) {
-    dir.create(out_dir)
+    if (!dir.exists(data_out)) {
+    dir.create(data_out)
   }
-
-    #read and save the raw data as a variable
-    data <- read_delim(raw_data, delim = ";", show_col_types = FALSE)
-
-    #setting column names to be more readable
-    colnames(data) <- c("fixed_acidity", "volatile_acidity", "citric_acid", 
-                        "residual_sugar", "chlorides", "free_sulfur_dioxide", 
-                        "total_sulfur_dioxide", "density", "pH", "sulphates", 
-                        "alcohol", "quality_score")
+    #load in training data
+    data <- read_csv(file_path)
     
     # changing quality_score to quality_category
     data <- data %>% 
@@ -75,4 +68,4 @@ main <- function(raw_data, data_out) {
     write_csv(scaled_data_test, file.path(data_out, "05_scaled_wine_data_test.csv"))
 }
 
-main(opt$raw_data, opt$data_to)
+main(opt$raw_data, opt$data_out)
