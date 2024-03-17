@@ -4,11 +4,11 @@ author: "Sid Ahuja, Xander Dawson, Zackarya Hamza"
 format: 
     html: 
         toc: true
-        toc-depth: 2
+        toc-depth: 3
         embed-resources: true
     pdf:
         toc: true
-        toc-depth: 2
+        toc-depth: 3
         embed-resources: true
 bibliography: references.bib 
 editor: source
@@ -97,8 +97,8 @@ wine_split <- initial_split(white_wine, prop = 0.70, strata = quality_category)
 wine_train <- training(wine_split)
 wine_test <- testing(wine_split)
 
-write_csv(wine_train, "data/processed/white_wine_train.csv")
-write_csv(wine_test, "data/processed/white_wine_test.csv")
+#write_csv(wine_train, "data/processed/white_wine_train.csv")
+#write_csv(wine_test, "data/processed/white_wine_test.csv")
 ```
 ```{r}
 # feature scaling recipe to generate scaled csv files
@@ -111,8 +111,8 @@ prep_preprocess_recipe <- prep(wine_preprocess_recipe, training = wine_train)
 scaled_wine_train <- bake(prep_preprocess_recipe, new_data = wine_train)
 scaled_wine_test <- bake(prep_preprocess_recipe, new_data = wine_test)
 
-write_csv(scaled_wine_train, "data/processed/scaled_white_wine_train.csv")
-write_csv(scaled_wine_test, "data/processed/scaled_white_wine_test.csv")
+#write_csv(scaled_wine_train, "data/processed/scaled_white_wine_train.csv")
+#write_csv(scaled_wine_test, "data/processed/scaled_white_wine_test.csv")
 ```
 ```{r}
 # summary statistics of the training data (no scaling)
