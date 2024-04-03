@@ -3,7 +3,7 @@
 "This script downloads the csv containing data from a specified URL and 
 extracts the relevent data, and saves it to a specified local filepath.
 
-Usage: src/01_Data_Download.R --url=<url> --file_path=<file_path>
+Usage: scripts/01_Data_Download.R --url=<url> --file_path=<file_path>
 
 Options:
 --url=<url>               URL of the dataset location from the web or local file path

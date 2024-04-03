@@ -3,7 +3,7 @@
 "This script performs EDA, creating visualizations and tables. It
 creates 2 tables and 1 figure, all within the main funtion.
 
-Usage: src/03_EDA.R --file_path=<file_path> --output_path=<output_path> 
+Usage: scripts/03_EDA.R --file_path=<file_path> --output_path=<output_path> 
 
 Options:
 --file_path=<file_path>         Path to the data file

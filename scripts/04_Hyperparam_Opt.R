@@ -4,7 +4,7 @@
 optimal value of K and outputting a figure demonstrating the 
 optimization.
 
-Usage: src/04_Hyperparam_Opt.R --file_path=<file_path> --output_path=<output_path> 
+Usage: scripts/04_Hyperparam_Opt.R --file_path=<file_path> --output_path=<output_path> 
 
 Options:
 --file_path=<file_path>         Path to the data file
@@ -17,6 +17,7 @@ suppressMessages(library(tidymodels))
 suppressMessages(library(psych))
 suppressWarnings(library(docopt))
 suppressWarnings(library(kknn))
+source("R/create_lineplot.R")
 
 opt <- docopt(doc)
 
@@ -75,12 +76,15 @@ main <- function(file_path, output_path) {
     writeLines(as.character(best_k), file.path(output_path, "05_best_k.txt"))
 
     # generating the plot of accuracy for each tested k value
-    accuracies_vs_k <- ggplot(accuracies, aes(x = neighbors, y = mean)) +
-        geom_point() +
-        geom_line() +
-        labs(x = "Neighbors", y = "Accuracy Estimate") +
-        theme(text = element_text(size = 12)) +
-        ggtitle("Cross-Validation Accuracy vs. Tested K value")
+    # accuracies_vs_k <- ggplot(accuracies, aes(x = neighbors, y = mean)) +
+    #     geom_point() +
+    #     geom_line() +
+    #     labs(x = "Neighbors", y = "Accuracy Estimate") +
+    #     theme(text = element_text(size = 12)) +
+    #     ggtitle("Cross-Validation Accuracy vs. Tested K value")
+    
+    accuracies_vs_k <- create_lineplot(accuracies, neighbors, mean,
+                                       "K (Neighbors)", "Cross-Validation Mean Accuracy", TRUE)
 
     #Saving Figure
     ggsave(file.path(output_path, "06_accuracies_vs_k_plot.png"), accuracies_vs_k)

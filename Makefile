@@ -26,32 +26,32 @@ all: data/raw/winequality-white.csv \
 
 
 # Download Data
-data/raw/winequality-white.csv: src/01_Data_Download.R
-	Rscript src/01_Data_Download.R \
+data/raw/winequality-white.csv: scripts/01_Data_Download.R
+	Rscript scripts/01_Data_Download.R \
 	--url="https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-white.csv" \
 	--file_path=data/raw/winequality-white.csv
 
 # Preprocess Data
-data/processed/01_wine_data.csv data/processed/02_wine_data_train.csv data/processed/03_wine_data_test.csv data/processed/04_scaled_wine_data_test.csv data/processed/05_scaled_wine_data_test.csv: src/02_Preprocess_Data.R data/raw/winequality-white.csv
-	Rscript src/02_Preprocess_Data.R \
+data/processed/01_wine_data.csv data/processed/02_wine_data_train.csv data/processed/03_wine_data_test.csv data/processed/04_scaled_wine_data_test.csv data/processed/05_scaled_wine_data_test.csv: scripts/02_Preprocess_Data.R data/raw/winequality-white.csv
+	Rscript scripts/02_Preprocess_Data.R \
 	--raw_data=data/raw/winequality-white.csv \
 	--data_out=data/processed/
 
 # Exploratory Data Analysis
-results/01_summary_table_features.csv results/02_summary_table_by_class.csv results/03_feature_dist_plot.png: src/03_EDA.R data/processed/02_wine_data_train.csv
-	Rscript src/03_EDA.R \
+results/01_summary_table_features.csv results/02_summary_table_by_class.csv results/03_feature_dist_plot.png: scripts/03_EDA.R data/processed/02_wine_data_train.csv
+	Rscript scripts/03_EDA.R \
 	--file_path=data/processed/02_wine_data_train.csv \
 	--output_path=results/
 
 # Hyperparameter Optimization
-results/04_k_val_accuracies.csv results/05_best_k.txt results/06_accuracies_vs_k_plot.png: src/04_Hyperparam_Opt.R data/processed/02_wine_data_train.csv
-	Rscript src/04_Hyperparam_Opt.R \
+results/04_k_val_accuracies.csv results/05_best_k.txt results/06_accuracies_vs_k_plot.png: scripts/04_Hyperparam_Opt.R data/processed/02_wine_data_train.csv
+	Rscript scripts/04_Hyperparam_Opt.R \
 	--file_path=data/processed/02_wine_data_train.csv \
 	--output_path=results/
 
 # Classification Model
-results/07_classification_model.rds results/08_test_accuracies.csv results/09_confusion_matrix.png: src/05_Classification_Model.R data/processed/02_wine_data_train.csv results/05_best_k.txt data/processed/03_wine_data_test.csv
-	Rscript src/05_Classification_Model.R \
+results/07_classification_model.rds results/08_test_accuracies.csv results/09_confusion_matrix.png: scripts/05_Classification_Model.R data/processed/02_wine_data_train.csv results/05_best_k.txt data/processed/03_wine_data_test.csv
+	Rscript scripts/05_Classification_Model.R \
 	--file_path=data/processed/02_wine_data_train.csv \
 	--best_k_path=results/05_best_k.txt \
 	--test_file=data/processed/03_wine_data_test.csv \
