@@ -1,6 +1,7 @@
 #' Create Summary Table
 #'
-#' Creates a new summary table from input data and writes to a new CSV file with input name, at input path.
+#' Creates a new summary table from input data. Compiles a data frame from input and writes to a new CSV file 
+#' with input name, at input path.
 #'
 #' @param name String specifying the name of the new CSV file to be written
 #' @param path Path within project directory where the new CSV file should be written
