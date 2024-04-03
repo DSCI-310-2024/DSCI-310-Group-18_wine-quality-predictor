@@ -4,7 +4,7 @@
 It saves the model to a RDS file and model results as a CSV. The model
 evaluation metrics are also calculated and saved.
 
-Usage: src/05_Classification_Model.R --file_path=<file_path> --best_k_path=<best_k_path> --test_file=<test_file> --output_path=<output_path> 
+Usage: scripts/05_Classification_Model.R --file_path=<file_path> --best_k_path=<best_k_path> --test_file=<test_file> --output_path=<output_path> 
 
 Options:
 --file_path=<file_path>         Path to the data file

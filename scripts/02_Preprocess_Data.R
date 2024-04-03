@@ -4,7 +4,7 @@
 prior to exploratory data analysis and modelling. It also splits the processed 
 data into train and test sets. Seed is set as 321.
 
-Usage: src/02_Preprocess_Data.R --raw_data=<raw_data> --data_out=<data_out>
+Usage: scripts/02_Preprocess_Data.R --raw_data=<raw_data> --data_out=<data_out>
 
 Options:
 --raw_data=<raw_data>   Path to the raw data
