@@ -11,5 +11,8 @@ RUN conda install -y \
     r-kknn=1.3.1 \
     r-docopt=0.7.1 \
     r-kableextra=1.4.\
+    r-vdiffr=1.0.7 \
+    r-testthat=3.2.0 \
+    jupyter-book=0.15.1 \
     make \
     quarto
