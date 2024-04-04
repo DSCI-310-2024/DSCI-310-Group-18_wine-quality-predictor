@@ -15,6 +15,7 @@ suppressMessages(library(tidyverse))
 suppressMessages(library(tidymodels))
 suppressMessages(library(psych))
 suppressWarnings(library(docopt))
+source("R/generate_summary_stats.R")
 
 opt <- docopt(doc)
 
@@ -37,23 +38,7 @@ main <- function(file_path, output_path) {
     write_csv(summary_table, file.path(output_path,"01_summary_table_features.csv"))
 
     #summary stats by class
-    num_obs <- nrow(data)
-    summary <- data %>%
-        group_by(quality_category) %>%
-        summarize(
-            count = n(),
-            percentage = n() / num_obs * 100,
-            fixed_acidity_avg = mean(fixed_acidity),
-            volatile_acidity_avg = mean(volatile_acidity),
-            citric_acid_avg = mean(citric_acid),
-            residual_sugar_avg = mean(residual_sugar),
-            chlorides_avg = mean(chlorides),
-            free_sulfur_dioxide_avg = mean(free_sulfur_dioxide),
-            total_sulfur_dioxide_avg = mean(total_sulfur_dioxide),
-            density_avg = mean(density),
-            pH_avg = mean(pH),
-            sulphates_avg = mean(sulphates),
-            alcohol_avg = mean(alcohol))
+    summary <- generate_summary_stats(data, quality_category)
     
     #convert to data frame
     summary_class <- data.frame(summary)
