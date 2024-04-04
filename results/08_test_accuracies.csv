@@ -1,0 +1,4 @@
+.metric,.estimator,.estimate
+accuracy,binary,0.773469387755102
+precision,binary,0.7178082191780822
+recall,binary,0.532520325203252
