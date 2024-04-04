@@ -20,8 +20,8 @@ minimal_data_output <- data.frame("var1" = 1,
                                   "percentage" = 100, 
                                   "var2_avg" = 2)
 minimal_data_output_col_count <- 4
-test_data_output_counts <- 1
-test_data_output_percentages <- 100
+minimal_data_output_counts <- 1
+minimal_data_output_percentages <- 100
 
 test_data_output <- data.frame("length" = c(1, 2, 3, 4),
                         "count" = c(1, 2, 4, 2),
