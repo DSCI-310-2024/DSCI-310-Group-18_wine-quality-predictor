@@ -19,3 +19,6 @@
 #TODO
 #' @examples
 #' 
+generate_summary_stats <- function(data, group_var) {
+    #stub
+}
