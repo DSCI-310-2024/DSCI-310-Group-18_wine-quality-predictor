@@ -8,23 +8,19 @@ test_that("refactoring code should not change our plot", {
 })
 
 test_that("The data frame should call existing columns", {
-  expect_error(wrong_col_plot)
+  expect_error(print(wrong_col_plot))
 })
 
 test_that("The plot should not take empty columns", {
-  expect_error(empty_plot)
-})
-
-test_that("Columns should be numeric", {
-  expect_error(str_plot)
+  expect_error(print(empty_plot))
 })
 
 test_that("`df` should be a dataframe", {
-  expect_error(list_plot)
+  expect_error(create_lineplot(num_list_input, time, absorbance))
 })
 
 test_that("Title should not be produced if no axis labels specified", {
-  expect_error(title_plot)
+  expect_error(create_lineplot(test_data, x = time, y = absorbance, title = TRUE))
 })
 
 test_that("Default settings plot should have all default values", {

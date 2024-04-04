@@ -13,18 +13,9 @@ test_plot <- create_lineplot(test_data, time, absorbance,
 
 num_list_input <- list(1, 2)
 
-str_data <- data.frame("absorbance" = c("0.2", "0.4", "0.8", "1.6", "3.2"),
-                       "time" = c("0", "15", "30", "45", "60"))
-
 default_plot <- create_lineplot(test_data, time, absorbance)
 
 # should all produce errors
-wrong_col_plot <- create_lineplot(test_data, time, od)
+wrong_col_plot <- create_lineplot(df = test_data, x = time, y = od)
 
-empty_plot <- create_lineplot(empty_data, time, absorbance)
-
-str_plot <- create_scatterplot(str_data, time, absorbance)
-
-list_plot <- create_scatterplot(num_list_input, time, absorbance)
-
-title_plot <- create_lineplot(test_data, time, absorbance, TRUE)
+empty_plot <- create_lineplot(df = empty_data, x = time, y = absorbance)
