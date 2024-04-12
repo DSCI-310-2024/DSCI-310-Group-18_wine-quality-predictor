@@ -14,5 +14,5 @@ RUN conda install -y \
     r-vdiffr=1.0.7 \
     r-testthat=3.2.0 \
     jupyter-book=0.15.1 \
-    make \
-    quarto
+    make=3.81 \
+    quarto=1.4.537
