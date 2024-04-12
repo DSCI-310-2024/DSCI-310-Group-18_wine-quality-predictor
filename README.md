@@ -28,7 +28,7 @@ docker-compose run --rm analysis-env make clean
 To run the analysis in its entirety, enter the following command in the terminal in the project root:
 
 ``` bash
-docker-compose run --rm analysis-env make all
+docker-compose run --rm project-image make all
 ```
 
 ### Working with container JupyterLab, the terminal, or VSCode
