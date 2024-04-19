@@ -16,3 +16,6 @@ RUN conda install -y \
     jupyter-book=0.15.1 \
     make=4.3 \
     quarto=1.4.550
+
+# Install `rWinePredictor` package
+RUN R -e 'devtools::install_github("DSCI-310-2024/rWinePredictor@v0.0.1")'

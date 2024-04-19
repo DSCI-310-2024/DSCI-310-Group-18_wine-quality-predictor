@@ -15,7 +15,7 @@ suppressMessages(library(tidyverse))
 suppressMessages(library(tidymodels))
 suppressMessages(library(psych))
 suppressWarnings(library(docopt))
-source("R/generate_summary_stats.R")
+suppressMessages(library(rWinePredictor))
 
 opt <- docopt(doc)
 

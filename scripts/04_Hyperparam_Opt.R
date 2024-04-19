@@ -17,7 +17,7 @@ suppressMessages(library(tidymodels))
 suppressMessages(library(psych))
 suppressWarnings(library(docopt))
 suppressWarnings(library(kknn))
-source("R/create_lineplot.R")
+suppressMessages(library(rWinePredictor))
 
 opt <- docopt(doc)
 
